@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image ,TouchableOpacity } from "react-native";
 import React from "react";
 
 //icon
@@ -6,10 +6,24 @@ import { Feather } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+
+//navigation control 
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+
+
 const Header = () => {
+
+
+  const navigation = useNavigation();
+
+
   return (
     <View style={styles.Header}>
+    <TouchableOpacity
+    onPress={() => navigation.openDrawer()}
+    >
       <Feather name="menu" size={24} color="#fff" />
+    </TouchableOpacity>
 
       <Image
         source={require("../../assets/images/InstaLogo.png")}
@@ -19,7 +33,7 @@ const Header = () => {
       <AntDesign name="plussquare" size={24} color="#fff" />
 
       <View style={styles.messnger}>
-        <Text style={{ color: "#fff", fontWeight: "800" }}> 7 </Text>
+        <Text style={{ color: "black", fontWeight: "800" }}> 7 </Text>
       </View>
       <FontAwesome5 name="facebook-messenger" size={24} color="#fff" />
 
@@ -35,6 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginTop:30
   },
 
   messnger: {

@@ -19,7 +19,7 @@ const Stories = () => {
           /> 
           <Text 
           style={{ 
-            color: "#fff" ,
+            color: "#fff" , 
             fontWeight:'500',
             paddingTop:4,
             
@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
         height:70 , 
         borderRadius:35 , 
         marginHorizontal:8.5  ,
+        borderWidth:3,
+        borderColor:'#ff8501'
     },
   
   })
