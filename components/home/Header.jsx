@@ -16,18 +16,14 @@ const Header = () => {
         style={{ width: 140, height: 50 }}
       />
 
-      
+      <AntDesign name="plussquare" size={24} color="#fff" />
 
-        <AntDesign name="plussquare" size={24} color="#fff" />
+      <View style={styles.messnger}>
+        <Text style={{ color: "#fff", fontWeight: "800" }}> 7 </Text>
+      </View>
+      <FontAwesome5 name="facebook-messenger" size={24} color="#fff" />
 
-        <View style={styles.messnger} >
-        <Text style={{ color:'#fff' , fontWeight:'800' }} > 7 </Text>
-        </View>
-        <FontAwesome5 name="facebook-messenger" size={24} color="#fff" />
-       
-
-        <Fontisto name="power" size={24} color="#fff" />
-      
+      <Fontisto name="power" size={24} color="#fff" />
     </View>
   );
 };
@@ -37,18 +33,18 @@ export default Header;
 const styles = StyleSheet.create({
   Header: {
     flexDirection: "row",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     alignItems: "center",
   },
 
-  messnger : {
-    backgroundColor:'red',
-    borderRadius:10,
-    width:20,
-    position:'absolute',
-    top:2,
-    right:42,
-    alignItems:'center',
-    zIndex:100
-  }, 
+  messnger: {
+    backgroundColor: "red",
+    borderRadius: 10,
+    width: 20,
+    position: "absolute",
+    top: 2,
+    right: 42,
+    alignItems: "center",
+    zIndex: 100,
+  },
 });
