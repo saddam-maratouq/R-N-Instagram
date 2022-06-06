@@ -1,9 +1,16 @@
-import { StyleSheet, Text, View, TextInput, Pressable,TouchableOpacity } from "react-native";
+import { StyleSheet,
+   Text, 
+   View, 
+   TextInput,
+   Pressable,
+   TouchableOpacity ,
+   Alert
+  } 
+   from 
+   "react-native";
 import React,{useState} from "react";
 
-// SignupForm
-
-// import { Formik } from 'formik';
+// SignupForm 
 import { Formik } from 'formik'
 import * as yup from 'yup';
 import Validator  from 'email-validator' 
@@ -12,10 +19,15 @@ import Validator  from 'email-validator'
 import {useNavigation } from '@react-navigation/native';
 
 
+import firebase from "../../firebase";
+
+
 
 const SignupForm = () => { 
 
-    // to handle formik 
+  const navigation = useNavigation();
+  
+  // to handle formik 
     const LoginFormSchema = yup.object().shape({
       email : yup.string().email().required('An email is required'),
       password: yup.string().required()
@@ -25,10 +37,19 @@ const SignupForm = () => {
     })
     
 
-  const navigation = useNavigation();
-
+    const onSignUp = async (email,password) => {
   
+      try {
 
+        await firebase.auth().createUserWithEmailAndPassword(email,password)
+        console.log(' created new user succsses from fireBase =>',email,password)
+        navigation.navigate('Home')
+      }
+      catch(error) {
+          Alert.alert(error.message) 
+      }
+
+    }
 
   return ( 
 
@@ -39,7 +60,7 @@ const SignupForm = () => {
         initialValues={{email: '', password: '',userName:''}} 
         //refer to function down which have handelSubmit
         onSubmit={ values => {
-          console.log( 'Formik =>',values) 
+          onSignUp(values.email,values.password) 
         }} 
         validationSchema={LoginFormSchema} 
         validateOnMount={true} 

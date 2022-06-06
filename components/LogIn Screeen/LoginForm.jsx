@@ -8,9 +8,10 @@ import {
     Alert,
    }
     from "react-native";
-import React,{useState} from "react";
 
+import React from "react";
 
+// tools to connect with  firebase  
 import { Formik } from 'formik'
 import * as yup from 'yup';
 import Validator  from 'email-validator' 
@@ -41,10 +42,11 @@ const LoginForm = () => {
       try {
         await firebase.auth().signInWithEmailAndPassword(email,password) 
         console.log(' login sucsses from fireBase =>',email,password) 
+        navigation.navigate('Home') 
     }
     catch(error) {
       console.log('login error from firebase',error) 
-      Alert.alert('Warning', 'your name or password is wrong',[
+      Alert.alert('Warning', 'your email or password is wrong',[
         {text : 'ok'} ,
         {text : 'sign up' , onPress : () => navigation.navigate('SignUp')}  
       ]) 
@@ -123,7 +125,7 @@ const LoginForm = () => {
 
       {/* butoon */}
       <Pressable 
-        style={styles.butoon(isValid)} 
+        style={styles.butoon(isValid)} // valied its like a condtion valied => email password rules 
         onPress={handleSubmit}
        >
           <Text style={{color:'#fff',fontSize:18,fontWeight:'500'}} >  Log  in  </Text>

@@ -48,7 +48,13 @@ what you learn ??
 
 - make style as ternery style by .length or validation.validate require email ... 
 
----
+- valied its like a condtion valied => email password rule if its do style etc ... 
+ 
+- if not valied you cant acsses  remember accses to the => 
+ 
+ (login sign up butoon ) 
+
+--
 
 
 ## Day 3 
@@ -56,7 +62,7 @@ what you learn ??
 <!-- the error  -->
 Metro has encountered an error: While trying to resolve module 'firebase' ? 
 
-the problem in consensus  betwen expo and firebase version 
+the problem in consensus  between expo and firebase version 
 
 solution : =>  npm i firebase@9.7.0  ..... 
 
