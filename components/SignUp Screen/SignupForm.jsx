@@ -8,10 +8,12 @@ import { Formik } from 'formik'
 import * as yup from 'yup';
 import Validator  from 'email-validator' 
 
+//navigation
+import {useNavigation } from '@react-navigation/native';
 
 
 
-const SignupForm = () => {
+const SignupForm = () => { 
 
     // to handle formik 
     const LoginFormSchema = yup.object().shape({
@@ -22,6 +24,8 @@ const SignupForm = () => {
       .min(2,' your name At least 2 characters') 
     })
     
+
+  const navigation = useNavigation();
 
   
 
@@ -115,7 +119,9 @@ const SignupForm = () => {
 
        <View style={styles.signUpContainer} > 
        <Text style={{fontSize:18}}> Already  have an account ? </Text> 
-       <TouchableOpacity> 
+       <TouchableOpacity 
+       onPress={()=> navigation.navigate('Login')} 
+       > 
        <Text style={{color:'#0096F6'}} > Log in  </Text>
        </TouchableOpacity>
        </View> 

@@ -1,4 +1,13 @@
-import { StyleSheet, Text, View, TextInput, Pressable,TouchableOpacity } from "react-native";
+import { 
+  StyleSheet,
+   Text,
+    View, 
+    TextInput, 
+    Pressable,
+    TouchableOpacity,
+    Alert,
+   }
+    from "react-native";
 import React,{useState} from "react";
 
 
@@ -6,12 +15,19 @@ import { Formik } from 'formik'
 import * as yup from 'yup';
 import Validator  from 'email-validator' 
 
+//navigation
+import {useNavigation } from '@react-navigation/native';
 
+//firebase
+import firebase from "../../firebase";
 
 
 const LoginForm = () => {
 
+  const navigation = useNavigation(); 
 
+
+    //schema to conect yup with formik   
     const LoginFormSchema = yup.object().shape({
       email : yup.string().email().required('An email is required'),
       password: yup.string().required()
@@ -19,7 +35,23 @@ const LoginForm = () => {
     })
     
 
-  
+    const onLogIn = async  (email,password) => {
+
+     
+      try {
+        await firebase.auth().signInWithEmailAndPassword(email,password) 
+        console.log(' login sucsses from fireBase =>',email,password) 
+    }
+    catch(error) {
+      console.log('login error from firebase',error) 
+      Alert.alert('Warning', 'your name or password is wrong',[
+        {text : 'ok'} ,
+        {text : 'sign up' , onPress : () => navigation.navigate('SignUp')}  
+      ]) 
+    }
+
+  }
+    
 
 
    return ( 
@@ -31,7 +63,9 @@ const LoginForm = () => {
         initialValues={{email: '', password: ''}} 
         //refer to function down which have handelSubmit
         onSubmit={ values => {
-          console.log( 'Formik =>',values) 
+
+          onLogIn(values.email,values.password) 
+         
         }} 
         validationSchema={LoginFormSchema} 
         validateOnMount={true} 
@@ -98,7 +132,7 @@ const LoginForm = () => {
 
        <View style={styles.signUpContainer} > 
        <Text style={{fontSize:18}}> Don't have an account? </Text> 
-       <TouchableOpacity> 
+       <TouchableOpacity onPress={() => navigation.navigate('SignUp') } > 
        <Text style={{color:'#0096F6'}} > Sign up </Text>
        </TouchableOpacity>
        </View> 

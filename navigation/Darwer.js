@@ -13,7 +13,7 @@ const Darwer = () => {
   return (
    
       <Drawer.Navigator 
-      initialRouteName='SignUp'
+      initialRouteName='Login'
       >
         <Drawer.Screen name="SignUp" component={SignUpScreen} options={{ headerShown:false}}/>
         <Drawer.Screen name="Login" component={LoginScreen} options={{ headerShown:false}}/>

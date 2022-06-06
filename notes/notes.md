@@ -48,4 +48,24 @@ what you learn ??
 
 - make style as ternery style by .length or validation.validate require email ... 
 
+---
+
+
+## Day 3 
+
+<!-- the error  -->
+Metro has encountered an error: While trying to resolve module 'firebase' ? 
+
+the problem in consensus  betwen expo and firebase version 
+
+solution : =>  npm i firebase@9.7.0  ..... 
+
+also mapy make firebase in a root ... 
+
+
+  what you learn ??   
+
+
+  
+
 
