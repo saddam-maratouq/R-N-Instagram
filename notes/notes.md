@@ -71,6 +71,27 @@ also mapy make firebase in a root ...
 
   what you learn ??   
 
+  **dont forget to follow new firbase instrocter in main firebase folder** => 
+
+import firebase from 'firebase';
+import 'firebase/firestore';
+
+const db = firebase.firestore(); 
+
+....etc 
+
+
+**to make data base work on firebase cloud dont forget change rules** => 
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+       allow read, write: if request.auth != null;
+    }
+  }
+}
+
 
   
 

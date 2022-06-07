@@ -20,7 +20,7 @@ import Validator  from 'email-validator'
 import {useNavigation } from '@react-navigation/native';
 
 //firebase
-import firebase from "../../firebase";
+import {firebase}  from "../../firebase";
 
 
 const LoginForm = () => {
@@ -35,10 +35,8 @@ const LoginForm = () => {
       .min(8,  'your password has to have at least 8 characters')
     })
     
-
+    //Acsees to login by  firebase data (email,password) in app 
     const onLogIn = async  (email,password) => {
-
-     
       try {
         await firebase.auth().signInWithEmailAndPassword(email,password) 
         console.log(' login sucsses from fireBase =>',email,password) 

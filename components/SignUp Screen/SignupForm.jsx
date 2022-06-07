@@ -8,7 +8,7 @@ import { StyleSheet,
   } 
    from 
    "react-native";
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 
 // SignupForm 
 import { Formik } from 'formik'
@@ -19,7 +19,7 @@ import Validator  from 'email-validator'
 import {useNavigation } from '@react-navigation/native';
 
 
-import firebase from "../../firebase";
+import {firebase,db} from "../../firebase";
 
 
 
@@ -37,19 +37,44 @@ const SignupForm = () => {
     })
     
 
-    const onSignUp = async (email,password) => {
+    const getRandomPicture = async () => {
+      const response = await fetch('https://randomuser.me/api') 
+      const picture = await response.json() 
+      return picture.results[0].picture.large  
+
+    }
+
+   
+    
+
+    // creat new user in firebase 
+    const onSignUp = async (email,password,userName) => {
   
       try {
 
-        await firebase.auth().createUserWithEmailAndPassword(email,password)
+      const authUser =   await firebase.auth().createUserWithEmailAndPassword(email,password)
         console.log(' created new user succsses from fireBase =>',email,password)
-        navigation.navigate('Home')
+        navigation.navigate('Home') 
+
+        db.collection('users').add({
+          owner_uid : authUser.user.uid,
+          userName , 
+          password: password,
+          email:authUser.user.email,
+         photo : await getRandomPicture() , 
+        })
       }
+
       catch(error) {
           Alert.alert(error.message) 
       }
 
     }
+
+
+
+    
+
 
   return ( 
 
@@ -60,7 +85,7 @@ const SignupForm = () => {
         initialValues={{email: '', password: '',userName:''}} 
         //refer to function down which have handelSubmit
         onSubmit={ values => {
-          onSignUp(values.email,values.password) 
+          onSignUp(values.email,values.password,values.userName) 
         }} 
         validationSchema={LoginFormSchema} 
         validateOnMount={true} 

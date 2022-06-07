@@ -1,7 +1,9 @@
 
-import { initializeApp } from "firebase/app"; //old way 
-import firebase from 'firebase' // new way 
-
+// import  initializeApp  from "firebase/app"; //old way 
+// import firebase from 'firebase' // new way 
+ 
+import firebase from 'firebase';
+import 'firebase/firestore';
 
 
 // Your web app's Firebase configuration
@@ -19,7 +21,13 @@ const firebaseConfig = {
 !firebase.apps.length ? 
 firebase.initializeApp(firebaseConfig) : firebase.app(); 
 
-export default firebase 
+// const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+
+const db = firebase.firestore(); 
+
+export  {firebase,db}  
 
 
 
