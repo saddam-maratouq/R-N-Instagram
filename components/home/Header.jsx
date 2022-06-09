@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image ,TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image ,TouchableOpacity,Alert } from "react-native";
 import React from "react";
 
 //icon
@@ -9,12 +9,27 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 //navigation control 
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import firebase from "firebase";
+
 
 
 const Header = () => {
-
-
+  
+  
   const navigation = useNavigation();
+  
+  const logOut = async () => {
+   try {
+    setTimeout(() => {
+      //signout from firebase auth.signOut().... 
+      navigation.navigate('Login') 
+    }, 2000);
+     
+   } catch (error) {
+     Alert.alert(error) 
+   }
+  }
+
 
 
   return (
@@ -36,8 +51,11 @@ const Header = () => {
         <Text style={{ color: "black", fontWeight: "800" }}> 7 </Text>
       </View>
       <FontAwesome5 name="facebook-messenger" size={24} color="#fff" />
-
+      <TouchableOpacity 
+      onPress={logOut} 
+      >
       <Fontisto name="power" size={24} color="#fff" />
+      </TouchableOpacity>
     </View>
   );
 };

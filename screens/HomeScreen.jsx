@@ -1,17 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView,ScrollView} from 'react-native'
 import React from 'react'
 import Header from '../components/home/Header'
 import Stories from '../components/home/Stories'
-
+import Posts from '../components/home/Posts'
+import { userposts } from '../Data/posts'
 
 const HomeScreen = () => {
   return (
+   
     <View style={styles.Container } >
     <View style={styles.headerContainer} > 
-     <Header/>  
+    <Header/>
      <Stories/> 
+    <ScrollView> 
+     { userposts.map(( post,index ) => (
+        <Posts  post={post}   key={index}/>
+     )) } 
+    </ScrollView> 
+    
     </View>
     </View>
+    
   )
 }
 
@@ -26,5 +35,6 @@ const styles = StyleSheet.create({
   headerContainer : {
     marginHorizontal:20 ,
     marginTop:30,
+   
   }
 })

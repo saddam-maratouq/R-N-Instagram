@@ -93,6 +93,9 @@ service cloud.firestore {
 }
 
 
+  **use .doc.set insted of add to take email it self => signUpform line : 59** 
+
+
   
 
 

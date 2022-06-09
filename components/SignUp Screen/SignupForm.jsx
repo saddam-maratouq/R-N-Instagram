@@ -56,7 +56,8 @@ const SignupForm = () => {
         console.log(' created new user succsses from fireBase =>',email,password)
         navigation.navigate('Home') 
 
-        db.collection('users').add({
+        db.collection('users').doc(authUser.user.email)
+         .set({
           owner_uid : authUser.user.uid,
           userName , 
           password: password,

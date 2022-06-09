@@ -9,12 +9,12 @@ import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-   <> 
+  
      <NavigationContainer style={styles.container} >
     <Darwer/>
       <StatusBar style="auto" /> 
       </NavigationContainer>
-    </>
+   
   );
 }
 
