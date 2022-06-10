@@ -45,7 +45,11 @@ const Header = () => {
         style={{ width: 140, height: 50 }}
       />
 
+      <TouchableOpacity 
+        onPress={()=> navigation.navigate('NewPost')}
+      >  
       <AntDesign name="plussquare" size={24} color="#fff" />
+      </TouchableOpacity>
 
       <View style={styles.messnger}>
         <Text style={{ color: "black", fontWeight: "800" }}> 7 </Text>

@@ -95,7 +95,18 @@ service cloud.firestore {
 
   **use .doc.set insted of add to take email it self => signUpform line : 59** 
 
+--
+
+  ## Day 4 
+
+  what you learn ??   
+
+
+  **We use this syntex as react js to on change text input** =>  
+
+   onChange={ e => SetHolderImage(e.nativeEvent.text)} 
 
   
+
 
 
