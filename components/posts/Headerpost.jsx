@@ -3,7 +3,7 @@ import React from 'react'
 
 const Headerpost = ({post}) => {
   
-    const {profile_picture,user} = post; 
+    const {profile_picture,userName} = post; 
 
 
   return (
@@ -14,7 +14,7 @@ const Headerpost = ({post}) => {
     source={{uri:profile_picture}}  
     style={{width:35,height:35,borderRadius:25}} 
     />
-    <Text  style={{color:'#fff' , fontWeight:'700',marginLeft:5}} > {user} </Text>
+    <Text  style={{color:'#fff' , fontWeight:'700',marginLeft:5}} > {userName} </Text>
      </View> 
     
      <Text  style={{color:'#fff' , fontSize:17 , fontWeight:'900'}} >...</Text>

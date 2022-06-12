@@ -36,7 +36,7 @@ const SignupForm = () => {
       .min(2,' your name At least 2 characters') 
     })
     
-
+     //Random users pictuer 
     const getRandomPicture = async () => {
       const response = await fetch('https://randomuser.me/api') 
       const picture = await response.json() 
@@ -56,18 +56,18 @@ const SignupForm = () => {
         console.log(' created new user succsses from fireBase =>',email,password)
         navigation.navigate('Home') 
 
-        db.collection('users').doc(authUser.user.email)
+        db.collection('users').doc(authUser.user.email) // to change id username to email in firebase 
          .set({
           owner_uid : authUser.user.uid,
           userName , 
           password: password,
           email:authUser.user.email,
-         photo : await getRandomPicture() , 
+          photo : await getRandomPicture() , 
         })
       }
 
       catch(error) {
-          Alert.alert(error.message) 
+          Alert.alert(error.message)  
       }
 
     }

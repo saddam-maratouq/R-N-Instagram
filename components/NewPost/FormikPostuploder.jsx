@@ -1,8 +1,11 @@
 import { StyleSheet, Text, View,Image,TextInput,TouchableOpacity } from 'react-native'
-import React,{useState} from 'react'
+
+import React,{useState,useEffect} from 'react'
 
 import * as yup from 'yup'
 import { Formik } from 'formik'
+
+import {db,firebase} from '../../firebase' 
 
 
 import { useNavigation } from '@react-navigation/native'
@@ -23,20 +26,66 @@ const FormikPostuploder = () => {
 
   const navigation = useNavigation() 
 
+  const [logeedInUser, setLogeedInUser] = useState(null) 
 
-  const Navigationhandler = () => {
-    setTimeout(() => {
-      navigation.navigate('Home') 
-    }, 2000);
+
+  const getUsername = () => {
+    const user = firebase.auth().currentUser
+    console.log('user =>',user.uid)
+    const unSubscribe = db.collection('users').where('owner_uid','==',user.uid)
+    .limit(1).onSnapshot(snapshot => {
+      snapshot.docs.map(doc => {
+        setLogeedInUser({
+          userName : doc.data().userName, // check
+          profilePicture : doc.data().photo, // check nameing 
+        })
+      }) 
+    })
+    
+   return unSubscribe  
   }
+
+  
+
+  useEffect(() => { 
+    getUsername();
+  }, [])
+
+  const uploadPostFirebase = async (imageUrl,caption) => {
+    const user = firebase.auth().currentUser.email 
+    const newPost = db.collection('users').doc(user).collection('posts').add({
+      imageUrl,
+      caption,
+      createdAt : new Date(),
+      owner_uid : firebase.auth().currentUser.uid,
+      userName : logeedInUser.userName,
+      profile_picture : await logeedInUser.profilePicture,
+      likes:0,
+      likes_by_users: [],
+      Comments : [],
+    })
+      .then( () =>
+      setTimeout(() => {
+        navigation.navigate('Home') 
+      }, 2000)); 
+    return newPost 
+  }
+  
+
+
+  // const Navigationhandler = () => {
+  //   setTimeout(() => {
+  //     navigation.navigate('Home') 
+  //   }, 2000);
+  // }
 
   return (
    <Formik
     initialValues={{imageUrl:'',caption:''}} 
     validationSchema={postSchema}
     onSubmit={(values) => {
-      console.log('values',values)
-      Navigationhandler()
+      uploadPostFirebase(values.imageUrl,values.caption)
+     
     }}
 
     validateOnMount={true} 

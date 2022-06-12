@@ -1,11 +1,26 @@
 import { StyleSheet, Text, View,SafeAreaView,ScrollView} from 'react-native'
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Header from '../components/home/Header'
 import Stories from '../components/home/Stories'
 import Posts from '../components/home/Posts'
 import { userposts } from '../Data/posts'
+import {db} from '../firebase'
 
 const HomeScreen = () => {
+
+   const [posts, setPosts] = useState([]) 
+
+
+  useEffect(() => {
+    
+    db.collectionGroup('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => doc.data())) 
+    })
+
+  }, []) 
+  
+  
+
   return (
    
     <View style={styles.Container } >
@@ -13,7 +28,7 @@ const HomeScreen = () => {
     <Header/>
      <Stories/> 
     <ScrollView> 
-     { userposts.map(( post,index ) => (
+     { posts.map(( post,index ) => (
         <Posts  post={post}   key={index}/>
      )) } 
     </ScrollView> 

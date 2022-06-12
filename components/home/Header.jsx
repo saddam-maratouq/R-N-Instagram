@@ -46,7 +46,7 @@ const Header = () => {
       />
 
       <TouchableOpacity 
-        onPress={()=> navigation.navigate('NewPost')}
+        onPress={()=> navigation.navigate('NewPost')} 
       >  
       <AntDesign name="plussquare" size={24} color="#fff" />
       </TouchableOpacity>

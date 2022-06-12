@@ -42,9 +42,9 @@ const Fotterpost = ({ post }) => {
         <Text>
           <Text style={{ color: "#fff", fontWeight: "900" }}>
           
-          {post.user}{" "}
+          {post.userName}{" "}
           </Text>
-          <Text style={{ color: "#fff" }}> {post.caption}</Text>
+          <Text style={{ color: "#fff" }}>{post.caption}</Text>
         </Text>
       </View>
 
