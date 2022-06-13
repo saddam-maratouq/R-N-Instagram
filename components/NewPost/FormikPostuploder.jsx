@@ -66,7 +66,7 @@ const FormikPostuploder = () => {
     })
       .then( () =>
       setTimeout(() => {
-        navigation.navigate('Home') 
+        navigation.navigate('Home2') 
       }, 2000)); 
     return newPost 
   }

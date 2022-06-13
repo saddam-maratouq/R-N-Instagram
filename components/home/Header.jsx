@@ -9,7 +9,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 //navigation control 
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import firebase from "firebase";
+import {firebase} from "firebase";
 
 
 
@@ -21,7 +21,7 @@ const Header = () => {
   const logOut = async () => {
    try {
     setTimeout(() => {
-      //signout from firebase auth.signOut().... 
+      // firebase.auth().signOut() 
       navigation.navigate('Login') 
     }, 2000);
      

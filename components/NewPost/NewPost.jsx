@@ -19,7 +19,7 @@ const NewPost = () => {
     {/* Header */}
     <View style={styles.postContent} > 
     <TouchableOpacity 
-        onPress={() => navigation.navigate('Home')  }
+        onPress={() => navigation.navigate('Home2')  }
      > 
     <AntDesign name="arrowleft" size={28} color="#fff" /> 
     </TouchableOpacity>

@@ -48,11 +48,11 @@ what you learn ??
 
 - make style as ternery style by .length or validation.validate require email ... 
 
-- valied its like a condtion valied => email password rule if its do style etc ... 
+- valied its like a condtion valied => email password rule if its do this style etc ... 
  
 - if not valied you cant acsses  remember accses to the => 
  
- (login sign up butoon ) 
+ (login sign up butoon => home screen  ) 
 
 --
 
@@ -81,7 +81,7 @@ const db = firebase.firestore();
 ....etc 
 
 
-**to make data base work on firebase cloud dont forget change rules** => 
+**to make data base work on firebase cloud dont forget change rules** => in firebase 
 
 rules_version = '2';
 service cloud.firestore {
@@ -93,7 +93,7 @@ service cloud.firestore {
 }
 
 
-  **use .doc.set insted of add to take email it self => signUpform line : 59** 
+  **use .doc.set insted of add to take email it self in fire base insted of genrate id  => signUpform line : 59** 
 
 --
 
@@ -106,7 +106,12 @@ service cloud.firestore {
 
    onChange={ e => SetHolderImage(e.nativeEvent.text)} 
 
-  
+
+    use !! to cahnge number to true or false just Number same in comment => view all comment ... 
+
+  --
+
+  * still need turn like butoon .... 4:33 
 
 
 

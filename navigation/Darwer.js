@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import NewpostScreen from '../screens/NewpostScreen';
+import TabNav from './TabNav';
 
 const Drawer = createDrawerNavigator(); 
 
@@ -18,7 +19,7 @@ const Darwer = () => {
       >
         <Drawer.Screen name="SignUp" component={SignUpScreen} options={{ headerShown:false}}/>
         <Drawer.Screen name="Login" component={LoginScreen} options={{ headerShown:false}}/>
-        <Drawer.Screen name="Home" component={HomeScreen} options={{ headerShown:false}}/>
+        <Drawer.Screen name="Home" component={TabNav} options={{ headerShown:false}}/>
         <Drawer.Screen name="NewPost" component={NewpostScreen} options={{ headerShown:false}}/>
 
       </Drawer.Navigator> 
